@@ -249,41 +249,45 @@ window.addEventListener('appinstalled', () => {
     installBtn.style.display = 'none';
 });
 
-const shareBtn = document.getElementById('share-button');
+document.addEventListener('DOMContentLoaded', () => {
 
-shareBtn.addEventListener('click', () => {
-    if (!items.length) {
-        alert('Sua lista está vazia!');
-        return;
-    }
+    const shareBtn = document.getElementById('share-button');
 
-    let texto = '🛒 *Lista de Mercado*\n\n';
+    if (!shareBtn) return;
 
-    items.forEach(item => {
-        const status = item.checked ? '✅' : '⬜';
-        const valor = item.value > 0
-            ? ` - R$ ${item.value.toFixed(2).replace('.', ',')}`
-            : '';
+    shareBtn.addEventListener('click', () => {
+        if (!items.length) {
+            alert('Sua lista está vazia!');
+            return;
+        }
 
-        texto += `${status} ${item.name}${valor}\n`;
+        let texto = '🛒 *Lista de Mercado*\n\n';
+
+        items.forEach(item => {
+            const status = item.checked ? '✅' : '⬜';
+            const valor = item.value > 0
+                ? ` - R$ ${item.value.toFixed(2).replace('.', ',')}`
+                : '';
+
+            texto += `${status} ${item.name}${valor}\n`;
+        });
+
+        const total = items
+            .filter(i => !i.checked)
+            .reduce((acc, i) => acc + i.value, 0);
+
+        texto += `\n💰 Total: R$ ${total.toFixed(2).replace('.', ',')}`;
+
+        if (navigator.share) {
+            navigator.share({
+                title: 'Lista de Mercado',
+                text: texto
+            });
+        } else {
+            const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
+            window.open(url, '_blank');
+        }
     });
 
-    const total = items
-        .filter(i => !i.checked)
-        .reduce((acc, i) => acc + i.value, 0);
-
-    texto += `\n💰 Total: R$ ${total.toFixed(2).replace('.', ',')}`;
-
-    const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
-
-    if (navigator.share) {
-    navigator.share({
-        title: 'Lista de Mercado',
-        text: texto
-    });
-} else {
-    window.open(url, '_blank');
-}
 });
-
 init();
