@@ -251,11 +251,12 @@ window.addEventListener('appinstalled', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    function setupShareButton() {
     const shareBtn = document.getElementById('share-button');
 
     if (!shareBtn) return;
 
-    shareBtn.addEventListener('click', () => {
+    shareBtn.onclick = () => {
         if (!items.length) {
             alert('Sua lista está vazia!');
             return;
@@ -287,7 +288,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
             window.open(url, '_blank');
         }
-    });
+    };
+}
 
 });
 init();
