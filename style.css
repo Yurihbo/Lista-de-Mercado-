@@ -276,3 +276,32 @@ input, button {
     transform: translateY(0);
   }
 }
+
+#install-button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px 0;
+
+  border: none;
+  border-radius: 14px;
+
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+
+  font-weight: bold;
+  font-size: 1rem;
+
+  cursor: pointer;
+
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+
+  transition: all 0.2s ease;
+}
+
+#install-button:hover {
+  transform: translateY(-2px);
+}
+
+#install-button:active {
+  transform: scale(0.96);
+}
