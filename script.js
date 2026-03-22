@@ -214,4 +214,39 @@ function init() {
     updateTotal();
 }
 
+let deferredPrompt;
+const installBtn = document.getElementById('install-button');
+
+// Captura evento do navegador
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+
+    installBtn.style.display = 'block';
+});
+
+// Clique no botão instalar
+installBtn.addEventListener('click', async () => {
+    if (!deferredPrompt) return;
+
+    deferredPrompt.prompt();
+
+    const { outcome } = await deferredPrompt.userChoice;
+
+    if (outcome === 'accepted') {
+        console.log('Usuário instalou o app');
+    } else {
+        console.log('Usuário cancelou');
+    }
+
+    deferredPrompt = null;
+    installBtn.style.display = 'none';
+});
+
+// Quando já está instalado
+window.addEventListener('appinstalled', () => {
+    console.log('App instalado!');
+    installBtn.style.display = 'none';
+});
+
 init();
