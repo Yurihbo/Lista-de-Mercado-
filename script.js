@@ -250,12 +250,12 @@ window.addEventListener('appinstalled', () => {
     installBtn.style.display = 'none';
 });
 
-    function setupShareButton() {
+   function setupShareButton() {
     const shareBtn = document.getElementById('share-button');
 
     if (!shareBtn) return;
 
-    shareBtn.onclick = () => {
+    shareBtn.addEventListener('click', () => {
         if (!items.length) {
             alert('Sua lista está vazia!');
             return;
@@ -287,7 +287,7 @@ window.addEventListener('appinstalled', () => {
             const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
             window.open(url, '_blank');
         }
-    };
+    });
 }
 
 });
