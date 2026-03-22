@@ -305,3 +305,32 @@ input, button {
 #install-button:active {
   transform: scale(0.96);
 }
+
+#share-button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px 0;
+
+  border: none;
+  border-radius: 14px;
+
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: white;
+
+  font-weight: bold;
+  font-size: 1rem;
+
+  cursor: pointer;
+
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+
+  transition: all 0.2s ease;
+}
+
+#share-button:hover {
+  transform: translateY(-2px);
+}
+
+#share-button:active {
+  transform: scale(0.96);
+}
