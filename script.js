@@ -250,7 +250,7 @@ window.addEventListener('appinstalled', () => {
     installBtn.style.display = 'none';
 });
 
-   function setupShareButton() {
+  function setupShareButton() {
     const shareBtn = document.getElementById('share-button');
 
     if (!shareBtn) return;
@@ -290,5 +290,4 @@ window.addEventListener('appinstalled', () => {
     });
 }
 
-});
 init();
