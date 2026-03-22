@@ -1,3 +1,7 @@
+// Firebase
+const app = firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
 function formatBRL(value) {
     return value.toLocaleString('pt-BR', {
         style: 'currency',
