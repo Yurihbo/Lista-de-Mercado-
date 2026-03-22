@@ -2,23 +2,53 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+<!-- Responsivo (ajustado) -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 <title>Lista de Mercado Mensal</title>
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#e11d48">
+
+<!-- iOS suporte -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+
+<!-- Ícone -->
+<link rel="icon" href="images/icon-192.png">
+<link rel="apple-touch-icon" href="images/icon-192.png">
+
 <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
+
 <h1>Lista de Mercado Mensal</h1>
 
-<div id="list-container" role="list" aria-label="Lista de itens de mercado">
-  <ul id="item-list" role="list">
-    <!-- Itens serão inseridos aqui dinamicamente -->
-  </ul>
+<div id="list-container" role="region" aria-label="Lista de itens de mercado">
+  <ul id="item-list" role="list"></ul>
 </div>
 
-<button id="add-item-button" aria-label="Adicionar novo item à lista">➕ Adicionar Item</button>
+<button id="add-item-button" aria-label="Adicionar novo item à lista">
+  ➕ Adicionar Item
+</button>
 
-<div id="total-container" aria-live="polite">Total: R$ 0,00</div>
+<div id="total-container" aria-live="polite">
+  Total: R$ 0,00
+</div>
 
 <script src="script.js"></script>
+
+<!-- PWA register -->
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js')
+    .then(() => console.log('PWA ativo'))
+    .catch(err => console.log('Erro SW:', err));
+}
+</script>
+
 </body>
 </html>
