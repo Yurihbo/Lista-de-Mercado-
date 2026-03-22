@@ -276,7 +276,14 @@ shareBtn.addEventListener('click', () => {
 
     const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
 
+    if (navigator.share) {
+    navigator.share({
+        title: 'Lista de Mercado',
+        text: texto
+    });
+} else {
     window.open(url, '_blank');
+}
 });
 
 init();
