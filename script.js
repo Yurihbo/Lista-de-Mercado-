@@ -212,6 +212,7 @@ function init() {
     loadFromStorage();
     renderList();
     updateTotal();
+    setupShareButton();
 }
 
 let deferredPrompt;
