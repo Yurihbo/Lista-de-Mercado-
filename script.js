@@ -250,8 +250,6 @@ window.addEventListener('appinstalled', () => {
     installBtn.style.display = 'none';
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-
     function setupShareButton() {
     const shareBtn = document.getElementById('share-button');
 
